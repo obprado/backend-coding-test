@@ -9,7 +9,6 @@
   <description>Backend coding test</description>
 
   <modules>
-    <module>webapp</module>
     <module>model</module>
     <module>rest-api</module>
   </modules>
