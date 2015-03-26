@@ -1,8 +1,10 @@
 package IntegrationTest;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import static org.junit.Assert.*;
-import org.junit.Test;
+import org.junit.*;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -11,6 +13,13 @@ import org.springframework.web.client.RestTemplate;
  */
 public class RESTfull_IT {
     private Collection<Expense> expenses;
+    private static final String EXPENSES_URI = "http://localhost:8080/expenses";
+    private final RestTemplate restTemplate = new RestTemplate();
+    
+    @Before
+    public void setup(){
+        //restTemplate.
+    }
     
     @Test
     public void shouldStoreAndRetrieveTaxes(){
@@ -20,8 +29,7 @@ public class RESTfull_IT {
     }
 
     private Collection<Expense> theCurrentExpenses() {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject("/expenses", Collection.class);
+        return Arrays.asList(restTemplate.getForObject(EXPENSES_URI, Expense[].class));
     }
 
     private void given(Collection<Expense> expenses) {
@@ -33,8 +41,7 @@ public class RESTfull_IT {
     }
 
     private void whenAdded(Expense newExpense) {
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.postForObject("/expenses", newExpense, Collection.class);
+        restTemplate.postForObject(EXPENSES_URI, newExpense, Collection.class);
     }
 
     private int thanThereUsedToBe() {
