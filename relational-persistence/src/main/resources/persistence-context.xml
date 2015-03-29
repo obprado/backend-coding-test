@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
     
     <jdbc:embedded-database id="dataSource" type="HSQL">
-        <jdbc:script location="01_addExpenses.sql"/>
+        <jdbc:script location="classpath:01_addExpenses.sql"/>
     </jdbc:embedded-database>
     
     
@@ -25,7 +25,7 @@
             </list>
         </property>
         <property name="configLocation">
-            <value>hibernate.cfg.xml</value>
+            <value>classpath:hibernate.cfg.xml</value>
         </property>
     </bean>    
  

@@ -20,6 +20,15 @@
     </properties>
     
     <dependencies>
+
+        <dependency>
+            <groupId>com.obprado</groupId>
+            <artifactId>relational-persistence</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        
+        <!-- Testing dependencies -->
+        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -27,6 +36,9 @@
             <scope>test</scope>
             <type>jar</type>
         </dependency>
+        
+        <!-- Web related dependencies -->
+        
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
