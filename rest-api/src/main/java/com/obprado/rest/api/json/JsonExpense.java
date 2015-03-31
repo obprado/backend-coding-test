@@ -57,7 +57,7 @@ public class JsonExpense {
     public Expense toExpense() {
         try {
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");            
-            Expense expense = new Expense(new BigDecimal(amount), df.parse(date), "some reason");
+            Expense expense = new Expense(new BigDecimal(amount), df.parse(date), reason);
             return expense;
         } catch (ParseException ex) {
             Logger.getLogger(JsonExpense.class.getName()).log(Level.SEVERE, null, ex);

@@ -18,6 +18,11 @@ public class JsonExpenseTest {
                 aExpense(    BigDecimal.ZERO, new Date(115, 2, 29, 23, 0, 0), "some reason").equals(
                 aJsonExpense("0",             "2015-03-29T23:00:00.000Z",     "some reason")
                         .toExpense()));
+        
+        assertTrue("The JsonExpense should know how to parse into a Expense",
+                aExpense(BigDecimal.valueOf(12.54), new Date(115, 2, 29, 23, 0, 0), "a different reason").equals(
+                aJsonExpense("12.54",             "2015-03-29T23:00:00.000Z",   "a different reason")
+                        .toExpense()));
     }
 
     @Test
