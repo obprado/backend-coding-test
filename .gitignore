@@ -2,3 +2,5 @@
 /rest-api/target/
 /model/target/
 /relational-persistence/target/
+*.nb-configuration.xml
+rest-api/nb-configuration.xml
