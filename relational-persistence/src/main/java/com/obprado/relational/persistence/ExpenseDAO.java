@@ -1,6 +1,7 @@
 package com.obprado.relational.persistence;
 
-import org.hibernate.SessionFactory;
+import java.util.*;
+import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +19,16 @@ public class ExpenseDAO {
     }
 
     public void save(HibernateExpense expense) {
-        sessionFactory.openSession().save(expense);
+        Session session = sessionFactory.openSession();
+        session.save(expense);
+        session.flush();
+    }
+
+    public Collection<HibernateExpense> list() {
+        return sessionFactory.
+                openSession().
+                createCriteria(HibernateExpense.class).
+                list();
     }
 
 }
