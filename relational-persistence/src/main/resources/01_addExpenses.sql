@@ -1,4 +1,4 @@
-create table expense(
+create table if not exists expense(
     id INT,
     expended DATE default NULL,
     amount VARCHAR(20),
