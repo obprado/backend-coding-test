@@ -23,10 +23,10 @@ public class PersistenceUtil {
                 getBean("sessionFactory");
         return new ExpenseDAO(factory);
     }
-
+  
     public static HibernateExpense aHibernateExpense() {
         HibernateExpense expense = new HibernateExpense();
-        expense.setAmount("some expense");
+        expense.setAmount("3.25");
         expense.setDate(Date.from(Instant.EPOCH));
         expense.setReason("a very good reason");
         return expense;

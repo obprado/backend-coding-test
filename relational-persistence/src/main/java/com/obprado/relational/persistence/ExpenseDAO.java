@@ -1,5 +1,7 @@
 package com.obprado.relational.persistence;
 
+import com.obprado.model.Expense;
+import com.obprado.model.ExpenseRepository;
 import java.util.*;
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,23 @@ import org.springframework.stereotype.Repository;
  * @author omar
  */
 @Repository
-public class ExpenseDAO {
+public class ExpenseDAO implements ExpenseRepository{
     private final SessionFactory sessionFactory;
+    
+    @Override
+    public void save(Expense expense) {
+        save(new HibernateExpense(expense));
+    }
+
+    @Override
+    public Collection<Expense> list() {
+        Collection<Expense> expenses = new ArrayList();
+        Collection<HibernateExpense> hibernateExpenses = listRows();
+        for (HibernateExpense hibernateExpense : hibernateExpenses)
+            expenses.add(hibernateExpense.toExpense());
+        return expenses;
+    }
+
 
     @Autowired
     public ExpenseDAO(SessionFactory sessionFactory) {
@@ -24,7 +41,7 @@ public class ExpenseDAO {
         session.flush();
     }
 
-    public Collection<HibernateExpense> list() {
+    public Collection<HibernateExpense> listRows() {
         return sessionFactory.
                 openSession().
                 createCriteria(HibernateExpense.class).
