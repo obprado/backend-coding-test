@@ -1,7 +1,6 @@
 package com.obprado.relational.persistence;
 
-import com.obprado.model.Expense;
-import com.obprado.model.ExpenseRepository;
+import com.obprado.model.*;
 import java.util.*;
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;

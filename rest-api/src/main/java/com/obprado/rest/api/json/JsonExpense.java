@@ -54,7 +54,7 @@ public class JsonExpense {
         this.reason = reason;
     }
 
-    Expense toExpense() {
+    public Expense toExpense() {
         try {
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");            
             Expense expense = new Expense(new BigDecimal(amount), df.parse(date), "some reason");

@@ -1,7 +1,9 @@
 package com.obprado.rest.api;
 
+import com.obprado.model.Expense;
 import com.obprado.relational.persistence.ExpenseDAO;
 import com.obprado.rest.api.json.JsonExpense;
+import com.obprado.usecase.*;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -20,12 +22,17 @@ public class Expenses {
     
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody Collection<JsonExpense> getExpenses(){
-        return fake_expenses;
+        Collection<JsonExpense> jsonExpenses = new ArrayList<>();
+        Collection<Expense> expenses = new ListExpenses(dao).fetch();
+        for (Expense expense : expenses)
+            jsonExpenses.add(new JsonExpense(expense));
+        return jsonExpenses;
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> addExpense(@RequestBody JsonExpense expense){
-        fake_expenses.add(expense);
+    public ResponseEntity<String> addExpense(@RequestBody JsonExpense jsonExpense){
+        AddExpense addExpense = new AddExpense(dao);
+        addExpense.add(jsonExpense.toExpense());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }        
 

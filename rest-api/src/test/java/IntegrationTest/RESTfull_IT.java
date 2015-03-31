@@ -31,7 +31,7 @@ public class RESTfull_IT {
     }
 
     private JsonExpense aNewExpense() {
-        return new JsonExpense("25", "2015-03-09T23:00:00Z", "very good reason");
+        return new JsonExpense("25", "2015-03-09T23:00:00.000Z", "very good reason");
     }
 
     private void whenAdded(JsonExpense newExpense) {
