@@ -1,7 +1,7 @@
 package com.obprado.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.math.*;
 import java.util.*;
 
 /**
@@ -37,6 +37,11 @@ public class Expense implements Serializable{
         return this.amount.equals(other.amount) &&
                 this.date.equals(other.date) &&
                 this.reason.equals(other.reason);
+    }
+
+    public BigDecimal getVAT() {
+        return amount.subtract(
+                amount.divide(new BigDecimal(1.2), 2, RoundingMode.DOWN));
     }
     
 }

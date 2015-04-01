@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/expenses")
 public class Expenses {
-    private static final Collection<JsonExpense> fake_expenses = new ArrayList<>();
     private ExpenseDAO dao;
     
     @RequestMapping(method = RequestMethod.GET)

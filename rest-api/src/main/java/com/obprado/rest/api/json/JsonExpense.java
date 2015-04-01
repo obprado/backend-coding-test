@@ -14,6 +14,7 @@ public class JsonExpense {
     private String amount;
     private String date;
     private String reason;
+    private String VAT;
 
     public JsonExpense() {        
     }
@@ -22,9 +23,10 @@ public class JsonExpense {
         this.amount = expense.getAmount().toString();
         this.date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(expense.getDate());
         this.reason = expense.getReason();
+        this.VAT = expense.getVAT().toString();
     }
 
-    public JsonExpense(String amount, String date, String reason) {
+    public JsonExpense(String amount, String date, String reason, String VAT) {
         this.amount = amount;
         this.date = date;
         this.reason = reason;
@@ -72,5 +74,14 @@ public class JsonExpense {
                 date.equals(other.date) &&
                 reason.equals(other.reason);
     }
+
+    public String getVAT() {
+        return VAT;
+    }
+
+    public void setVAT(String VAT) {
+        this.VAT = VAT;
+    }
+    
     
 }
