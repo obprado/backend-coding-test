@@ -4,17 +4,18 @@
     "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+                 
         <!-- Database connection settings -->
-        <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
-        <property name="connection.url">jdbc:hsqldb:data/expense</property>
-        <property name="connection.username">sa</property>
-        <property name="connection.password"></property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/expense</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">secret</property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
 
         <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <!-- Enable Hibernate's current session context -->
         <property name="current_session_context_class">org.hibernate.context.ManagedSessionContext</property>
 
